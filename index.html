@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto" >
+    <script src="script.js" defer></script>
+</head>
+<body>
+        <div class="header">
+            <h1>Library</h1>
+        </div>
+        <div class="main">
+            <table id="libraryTable">
+                <tr>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                  </tr>
+                  <tbody id="bookTableBody">
+                    <!-- test -->
+                  </tbody>
+            </table>
+            <button id="add" onclick="addBookToLibrary()"> + </button>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Add a book</h1>
+              <form onsubmit="submitForm(event)" id="modal-form" action="">
+                <div>
+                    <label for="author">Author</label>
+                    <input id="author" type="text" class="form-control">
+                </div>
+                <div>
+                    <label for="title">Title</label>
+                    <input id="title" type="text" class="form-control">
+                    
+                </div>
+                <div>
+                    <label for="pages">Pages</label>
+                    <input id="pages" type="number" class="form-control">
+                    
+                </div>
+                <div id="read-submit">
+                    <label for="read-status">Read status</label>
+                    <select name="" id="read-status">
+                        <option value="true">Read</option>
+                        <option value="false">Not read</option>
+                    </select>
+                    <button id="submit" type="submit">Submit</button>
+                  </form>    
+                </div>
+            </div>
+          </div>
+
+        <div class="footer">
+            <p>2021 Copyright Hans Cabanero The Odin Project</p>
+        </div>
+</body>
+</html>
