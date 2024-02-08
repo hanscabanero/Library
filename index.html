@@ -21,9 +21,9 @@
                     <th>Title</th>
                     <th>Pages</th>
                     <th>Status</th>
+                    <th>Remove</th>
                   </tr>
                   <tbody id="bookTableBody">
-                    <!-- test -->
                   </tbody>
             </table>
             <button id="add" onclick="addBookToLibrary()"> + </button>
@@ -32,7 +32,7 @@
             <div class="modal-content">
             <span class="close">&times;</span>
             <h1>Add a book</h1>
-              <form onsubmit="submitForm(event)" id="modal-form" action="">
+              <form onsubmit="addBookToLibrary(event)" id="modal-form" action="">
                 <div>
                     <label for="author">Author</label>
                     <input id="author" type="text" class="form-control">

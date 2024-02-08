@@ -32,54 +32,67 @@ function printLibrary(library) {
         const titleCell = document.createElement('td');
         titleCell.textContent = title;
         row.appendChild(titleCell);
-
+        
         const pagesCell = document.createElement('td');
         pagesCell.textContent = pages;
         row.appendChild(pagesCell);
-
+        
         const readStatusCell = document.createElement('td');
-        readStatusCell.textContent = readStatus ? 'Read' : 'Not Read';
+
+        const readToggle = document.createElement('button');
+        readToggle.textContent = readStatus ? 'Read' : 'Not Read'
+        
+        readToggle.style.backgroundColor = readStatus ? 'green' : 'red';
+
+        readToggle.addEventListener('click', function() {
+          changeReadStatus(i);
+        })
+        readStatusCell.appendChild(readToggle);
         row.appendChild(readStatusCell);
 
+        const buttonCell = document.createElement('td');
+        const button = document.createElement('button');
+        button.textContent = 'x';
+        button.addEventListener('click', function() {
+            removeBook(i);
+            console.log('Button clicked for book:', library[i]);
+        });
+        buttonCell.appendChild(button);
+        row.appendChild(buttonCell);
+
         tableBody.appendChild(row);
+      }
     }
-}
-
-
-
-
-function addBookToLibrary() {
-  // do stuff here
-}
-
-printLibrary(myLibrary);
-
-
+    
+    
+    printLibrary(myLibrary);
+    
 //modal
-let submit = document.getElementById('submit');
 
+let modal = document.getElementById("modal");
 let modalForm = document.getElementById("modal-form");
-modalForm.addEventListener('submit', submitForm)
 let btn = document.getElementById("add");
 let span = document.getElementsByClassName("close")[0];
 
+let submit = document.getElementById('submit');
 
-function submitForm(event) {
+
+function addBookToLibrary(event) {
   event.preventDefault();
   
   let author = document.getElementById('author').value;
   let title = document.getElementById('title').value;
   let pages = document.getElementById('pages').value;
-  let readStatus = document.getElementById('status').value;
-
-  
+  let readStatus = document.getElementById('read-status').value;
   let newBook = new Book(author, title, pages, readStatus)
   
   myLibrary.push(newBook);
-  console.log(newBook);
+
+  printLibrary(myLibrary);  
   modal.style.display = "none";
-  printLibrary(myLibrary); 
+  return false;
 }
+
 
 btn.onclick = function() {
   modal.style.display = "block";
@@ -87,4 +100,22 @@ btn.onclick = function() {
 
 span.onclick = function() {
   modal.style.display = "none";
+}
+function removeBook(index) {
+  //verify parameters
+  if (index >= 0 && index < myLibrary.length) {
+      //remove row
+      myLibrary.splice(index, 1);
+      //print new
+      printLibrary(myLibrary);
+  }
+}
+function changeReadStatus(i) {
+    //verify parameters
+  if (i >= 0 && i < myLibrary.length) {
+
+    myLibrary[i].readStatus = !myLibrary[i].readStatus;
+    //print new
+    printLibrary(myLibrary);
+}
 }
