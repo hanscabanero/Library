@@ -1,9 +1,10 @@
-//book constructor
-function Book(author, title, pages, readStatus) {
+class Book {
+  constructor(author, title, pages, readStatus) {
     this.author = author;
     this.title = title;
     this.pages = pages;
     this.readStatus = readStatus;
+  }
 }
 
 //library array
